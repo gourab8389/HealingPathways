@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import { menu, search } from '../assets'
-import CustomButton from './CustomButton'
-import { usePrivy } from '@privy-io/react-auth'
+import { usePrivy } from '@privy-io/react-auth' 
 import { IconHeartHandshake } from '@tabler/icons-react'
 import { navLinks } from '../constants'
 import { useNavigate } from 'react-router-dom'
+import CustomButton from './ui/CustomButton'
 
 
 const Navbar = () => {
@@ -49,7 +49,7 @@ const Navbar = () => {
       </div>
 
       <div className="hidden flex-row justify-end gap-2 sm:flex">
-        <CustomButton 
+      <CustomButton 
         btnType={'button'}
         title={authenticated ? "Logout": "Login"}
         styles={authenticated ? "bg-[#1dc071]": "bg-[#8c6dfd]"}
@@ -76,8 +76,8 @@ const Navbar = () => {
                         src={link.imageUrl} alt="nav menu" className={`h-[14px] w-[14px] ${isActive === link.name ? 'bg-[#1dc071]' : 'bg-[#808191]'}`} />
 
                         <p className={`font-epilogue text-[14px] font-semibold ${isActive === link.name ? 'text-[#1dc071]' : 'text-[#808191]'}`}>
-        {link.name}
-      </p>
+                          {link.name}
+                        </p>
                     </li>
                 ))}
             </ul>
