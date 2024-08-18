@@ -6,7 +6,7 @@ import { IconHeartHandshake } from '@tabler/icons-react'
 
 const Icon = ({styles, name, imageUrl, isActive, disabled, handleClick}) => {
     return (
-        <div className={`h-[48px] w-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex items-center justify-center ${styles}`} onClick={handleClick}>
+        <div className={`h-[48px] w-[48px] rounded-[10px] cursor-pointer ${isActive && isActive === name && 'bg-[#2c2f32]'} flex items-center justify-center ${styles}`} onClick={handleClick}>
             {
                 !isActive ? (
                     <img 
