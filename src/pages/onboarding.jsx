@@ -17,6 +17,22 @@ const Onboarding = () => {
                 </label>
                 <input type="text" id="username" value={username} onChange={(e)=>setUsername(e.target.value)} className='w-full rounded-lg bg-neutral-900 px-4 py-3 text-neutral-400 focus:outline-none'/>
             </div>
+
+
+            <div className="mb-4">
+                <label htmlFor="age" className='mb-2 block text-sm text-gray-300'>
+                    Age
+                </label>
+                <input type="number" id="age" value={age} onChange={(e)=>setAge(e.target.value)} className='w-full rounded-lg bg-neutral-900 px-4 py-3 text-neutral-400 focus:outline-none'/>
+            </div>
+
+
+            <div className="mb-4">
+                <label htmlFor="location" className='mb-2 block text-sm text-gray-300'>
+                    Location
+                </label>
+                <input type="text" id="location" value={location} onChange={(e)=>setLocation(e.target.value)} className='w-full rounded-lg bg-neutral-900 px-4 py-3 text-neutral-400 focus:outline-none'/>
+            </div>
         </form>
       </div>
     </div>
