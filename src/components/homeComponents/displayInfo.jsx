@@ -1,6 +1,7 @@
 import { IconCircleDashedCheck, IconHourglassHigh, IconUserScan } from '@tabler/icons-react'
 import React, { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
+import MetricsCard from './metricsCard';
 
 
 const DisplayInfo = () => {
@@ -56,7 +57,7 @@ const DisplayInfo = () => {
             subtitle: "View",
             value: metrics.pendingScreenings,
             icon:IconUserScan,
-            onclick: () => navigate('/screenings/pendings')
+            onclick: () => navigate('/screenings/pending')
         },
         {
             title: "Overdue Screenings",
@@ -67,10 +68,20 @@ const DisplayInfo = () => {
         },
     ]
   return (
-    <div>
-      
+    <div className='flex flex-wrap gap-[26px]'>
+      <div className="mt-7 grid w-full grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:">
+          {metricsData.slice(0,2).map((metric)=>(
+            <MetricsCard key={metric.title} {...metric}/>
+          ))}
+      </div>
+
+      <div className="mt-[9px] grid w-full gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        {metricsData.slice(2).map((metric)=>(
+          <MetricsCard key={metric.title} {...metric}/>
+        ))}
+      </div>
     </div>
   )
 }
 
-export default DisplayInfo
+export default DisplayInfo;
