@@ -1,5 +1,5 @@
 export default {
-    dialet: "postgresql",
+    dialect: "postgresql",
     schema: "./src/utils/schema.jsx",
     out: "./drizzle",
 

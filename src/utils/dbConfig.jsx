@@ -8,4 +8,4 @@ const sql = neon(
     "postgresql://duo_linga_owner:3Zz8usHLSNmQ@ep-sweet-wildflower-a5nmoq6r.us-east-2.aws.neon.tech/cancer_ai?sslmode=require"
 );
 
-export const db = drizzle(sql, {schema})
+export const db = drizzle(sql, {schema});
