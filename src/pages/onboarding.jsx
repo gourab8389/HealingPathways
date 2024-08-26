@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
+import { usePrivy } from '@privy-io/react-auth';
+import { useStateContext } from '../context';
 
 const Onboarding = () => {
     const [username, setUsername] = useState(" ");
     const [age, setAge] = useState("");
     const [location, setLocation] = useState("");
 
+    const {createUser} = useStateContext()
+
+    const {user} = usePrivy();
+    console.log(user)
     const handleOnboarding = async(e)=> {
         e.preventDefault();
+        const userData = {
+            username,
+            age: parseInt(age, 10),
+            location,
+            createdBy: user.email.address
+        }
         console.log(username, age, location)
     }
   return (

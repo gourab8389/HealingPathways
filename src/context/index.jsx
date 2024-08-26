@@ -80,5 +80,33 @@ export const StateContextProvider = ({children}) => {
     }, []);
 
 
+    const updateRecord = useCallback(async(recordData)=> {
+        try {
+            const {documentId,...dataToUpdate} = recordData;
+            const updateRecords = await db.update(Records).set(dataToUpdate).where(eq(Records.id, documentId)).returning();
 
+            setRecords((prevRecords)=>prevRecords.map((record)=>record.id === documentId ? updateRecords[0]: record));
+        } catch (error) {
+            console.error("Error updating record", error);
+            return null;
+        }
+    },[])
+
+    return (
+        <StateContext.Provider value={{
+            users,
+            fetchUsers,
+            createUser,
+            fetchUserByEmail,
+            currentUser,
+            fetchUserRecords,
+            records,
+            createRecord,
+            updateRecord
+        }}>
+            {children}
+        </StateContext.Provider>
+    )
 }
+
+export const useStateContext = () => useContext(StateContext)
