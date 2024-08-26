@@ -19,6 +19,8 @@ const Onboarding = () => {
             location,
             createdBy: user.email.address
         }
+        const newUser = await createUser(userData)
+        console.log(newUser)
         console.log(username, age, location)
     }
   return (

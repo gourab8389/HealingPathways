@@ -48,15 +48,16 @@ export const StateContextProvider = ({children}) => {
 
     const createUser = useCallback(async (userData) => {
         try {
-            const newUser = await db.insert().into(Users).values(userData).returning().execute();
+            const newUser = await db.insert(Users).values(userData).returning().execute();
             fetchUsers();
-
-            setUsers((prevUsers)=>[...prevUsers, newUser[0]]);
+    
+            setUsers((prevUsers) => [...prevUsers, newUser[0]]);
         } catch (error) {
             console.error("Error creating user", error);
             return null;
         }
     }, []);
+    
 
 
     const fetchUserRecords = useCallback(async(userEmail)=>{
