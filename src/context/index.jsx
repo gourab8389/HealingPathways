@@ -46,5 +46,39 @@ export const StateContextProvider = ({children}) => {
         }
     }, []);
 
+    const createUser = useCallback(async (userData) => {
+        try {
+            const newUser = await db.insert().into(Users).values(userData).returning().execute();
+            fetchUsers();
+
+            setUsers((prevUsers)=>[...prevUsers, newUser[0]]);
+        } catch (error) {
+            console.error("Error creating user", error);
+            return null;
+        }
+    }, []);
+
+
+    const fetchUserRecords = useCallback(async(userEmail)=>{
+        try {
+            const result = await db.select().from(Records).where(eq(Records.createdBy, userEmail)).execute();
+            setRecords(result);
+        } catch (error) {
+            console.error("Error fetching user records", error);
+        }
+    },[])
+
+    const createRecord = useCallback(async (recordData) => {
+        try {
+            const newRecord = await db.insert().into(Records).values(recordData).returning({id:Records.id}).execute();
+            setRecords((prevRecords)=>[...prevRecords, newRecord[0]]);
+            return newRecord[0];
+        } catch (error) {
+            console.error("Error creating record", error);
+            return null;
+        }
+    }, []);
+
+
 
 }
