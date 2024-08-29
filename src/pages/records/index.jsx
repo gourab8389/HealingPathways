@@ -19,7 +19,8 @@ const Index = () => {
 
 
             <div className="grid w-full sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-                <RecordCard
+                <RecordCard record={""}
+                onNavigate={""}
                 />
             </div>
         </div>
