@@ -10,9 +10,8 @@ import ReactMarkdown from "react-markdown";
 
 const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-const SingleRecordDetails = () => {
-
-    const { state } = useLocation();
+function SingleRecordDetails() {
+  const { state } = useLocation();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -86,7 +85,7 @@ const SingleRecordDetails = () => {
         kanbanRecords: "",
       });
       setUploadSuccess(true);
-      setIsModalOpen(false); // Close the modal after a successful upload
+      setIsModalOpen(false);
       setFilename("");
       setFile(null);
       setFileType("");
@@ -147,8 +146,8 @@ const SingleRecordDetails = () => {
     setIsProcessing(false);
   };
 
-    return (
-        <div className="flex flex-wrap gap-[26px]">
+  return (
+    <div className="flex flex-wrap gap-[26px]">
       <button
         type="button"
         onClick={handleOpenModal}
@@ -222,7 +221,7 @@ const SingleRecordDetails = () => {
         </div>
       </div>
     </div>
-    )
+  );
 }
 
 export default SingleRecordDetails;
