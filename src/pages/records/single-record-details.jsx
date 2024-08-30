@@ -1,9 +1,14 @@
 import { IconFileUpload } from "@tabler/icons-react";
 import React from "react";
+import RecordDetailsHeader from "./components/record-details-header";
+import { useLocation } from "react-router-dom";
+
 
 
 
 const SingleRecordDetails = () => {
+
+    const {state} = useLocation();
     return (
         <div className="flex flex-wrap gap-[26px]">
             <button 
@@ -16,6 +21,7 @@ const SingleRecordDetails = () => {
             </button>
 
             {/* fileUploadModal */}
+            <RecordDetailsHeader recordName={state}/>
         </div>
     )
 }
