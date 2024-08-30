@@ -8,17 +8,16 @@ import { useStateContext } from "./context";
 import { usePrivy } from "@privy-io/react-auth";
 
 const App = () => {
-    const { currentUser } = useStateContext();
-    const { user, authenticated, ready, login } = usePrivy();
-    const navigate = useNavigate();
+    const { user, authenticated, ready, login, currentUser } = useStateContext();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (ready && !authenticated) {
-            login();
-        } else if (user && !currentUser) {
-            navigate("/onboarding");
-        }
-    }, [ready, authenticated, user, currentUser, navigate]);
+  useEffect(() => {
+    if (ready && !authenticated) {
+      login();
+    } else if (user && !currentUser) {
+      navigate("/onboarding");
+    }
+  }, [user, authenticated, ready, login, currentUser, navigate]);
 
     return (
         <div className="relative flex min-h-screen flex-row bg-[#13131a] p-4">

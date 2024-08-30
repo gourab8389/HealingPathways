@@ -1,6 +1,7 @@
 import { IconCirclePlus } from "@tabler/icons-react";
 import React, { useState, useEffect } from "react";
 import RecordCard from "./components/record-card";
+import CreateRecordModal from "./components/create-record-modal";
 
 const Index = () => {
 
@@ -17,6 +18,12 @@ const Index = () => {
                 Create Record
             </button>
 
+
+            <CreateRecordModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            onCreate={createFolder}
+            />
 
             <div className="grid w-full sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
                 <RecordCard record={""}
