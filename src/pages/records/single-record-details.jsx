@@ -1,7 +1,8 @@
-import { IconFileUpload } from "@tabler/icons-react";
-import React from "react";
+import { IconChevronRight, IconFileUpload, IconProgress } from "@tabler/icons-react";
+import React, { useState } from "react";
 import RecordDetailsHeader from "./components/record-details-header";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import FileUploadModal from "./components/file-upload-modal";
 
 
 
@@ -9,6 +10,21 @@ import { useLocation } from "react-router-dom";
 const SingleRecordDetails = () => {
 
     const { state } = useLocation();
+
+    const navigate = useNavigate();
+    const [file, setFile] = useState(null);
+    const [uploading, setUploading] = useState(false);
+    const [uploadSuccess, setUploadSuccess] = useState(false);
+    const [processing, setProcessing] = useState(false);
+    const [analysisResult, setAnalysisResult] = useState(
+        state.analysisResult || "",
+    );
+    
+    
+    const [filename, setFileName] = useState("");
+    const [filetype, setFileType] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <div className="flex flex-wrap gap-[26px]">
       <button
@@ -16,18 +32,18 @@ const SingleRecordDetails = () => {
         // onClick={handleOpenModal}
         className="mt-6 inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
       >
-        <IconFileUpload />
+        {/* <IconFileUpload /> */}
         Upload Reports
       </button>
-      {/* <FileUploadModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onFileChange={handleFileChange}
-        onFileUpload={handleFileUpload}
-        uploading={uploading}
-        uploadSuccess={uploadSuccess}
-        filename={filename}
-      /> */}
+      <FileUploadModal
+        // isOpen={isModalOpen}
+        // onClose={handleCloseModal}
+        // onFileChange={handleFileChange}
+        // onFileUpload={handleFileUpload}
+        // uploading={uploading}
+        // uploadSuccess={uploadSuccess}
+        // filename={filename}
+      />
       <RecordDetailsHeader recordName={state.recordName} />
       <div className="w-full">
         <div className="flex flex-col">
@@ -48,6 +64,7 @@ const SingleRecordDetails = () => {
                       Analysis Result
                     </h2>
                     <div className="space-y-2">
+                    {analysisResult}
                       {/* <ReactMarkdown>{analysisResult}</ReactMarkdown> */}
                     </div>
                   </div>
@@ -59,6 +76,9 @@ const SingleRecordDetails = () => {
                     >
                       View Treatment plan
                       <IconChevronRight size={20} />
+                      {true && <IconProgress size={10} className="animate-spin mr-3 h-5 w-5"/>
+                      
+                      }
                       {/* {processing && (
                         <IconProgress
                           size={10}
