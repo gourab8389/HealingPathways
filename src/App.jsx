@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import { Home, Onboarding, Profile } from "./pages";
 import { useStateContext } from "./context";
 import { usePrivy } from "@privy-io/react-auth";
+import SingleRecordDetails from "./pages/records/single-record-details";
 
 const App = () => {
     const { user, authenticated, ready, login, currentUser } = useStateContext();
@@ -32,6 +33,7 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/onboarding" element={<Onboarding />} />
                     <Route path="/medical-records" element={<MedicalRecords />} />
+                    <Route path="/medical-records/:id" element={<SingleRecordDetails />} />
                 </Routes>
             </div>
         </div>
