@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import MedicalRecord from "./pages/records/index"
+import MedicalRecords from "./pages/records/index"
 import Navbar from "./components/Navbar";
 import { Home, Onboarding, Profile } from "./pages";
 import { useStateContext } from "./context";
@@ -31,7 +31,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/onboarding" element={<Onboarding />} />
-                    <Route path="/medical-records" element={<MedicalRecord />} />
+                    <Route path="/medical-records" element={<MedicalRecords />} />
                 </Routes>
             </div>
         </div>
