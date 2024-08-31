@@ -14,9 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
     <PrivyProvider
-      appId="clzyaqmdg01g5eu50owabyofj"
+      appId={import.meta.env.VITE_PRIVY_APP_ID}
+      
       config={{
-        // Customize Privy's appearance in your app
         appearance: {
           theme: 'dark',
           
