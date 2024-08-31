@@ -4,7 +4,7 @@ export default {
     out: "./drizzle",
 
     dbCredentials: {
-        url: process.env.NEON_DB_URL,
-        connectionString: process.env.NEON_DB_URL
+        url: import.meta.env.VITE_NEON_DB_URL,
+        connectionString: import.meta.env.VITE_NEON_DB_URL
     }
 }
