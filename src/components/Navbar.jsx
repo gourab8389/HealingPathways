@@ -16,7 +16,6 @@ const Navbar = () => {
 
     const [isActive, setIsActive] = useState("dashboard")
 
-    console.log("user info", user)
 
 
     const handleLoginLogout = useCallback(()=>{
@@ -25,7 +24,7 @@ const Navbar = () => {
         }else{
             login().then(()=>{
                 if(user){
-                    console.log(user);
+                    // console.log(user);
                     // fetch user
                 }
             });
